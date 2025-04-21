@@ -1,19 +1,3 @@
-<!-- 
-  Hello 😊.
-
-  This template is designed and developed by Nisar Hassan Naqvi
-  for anyone to use for free or customize the way they like.
-
-  Github Repo: https://github.com/nisarhassan12/portfolio-template/
-  My Website: https://nisar.dev
-
-  For business & inquires, contact me => syednisarhassan12@gmail.com
--->
-
-<!--
-  Follow the instructions written in comments to create your stunning portfolio
--->
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -34,243 +18,167 @@
 </head>
 
 <body>
+  <div id="root"></div>
 
-  <!-- ***** Header ***** -->
+  <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
-  <header class="header" role="banner" id="top">
-    <div class="row">
-      <nav class="nav" role="navigation">
-        <ul class="nav__items">
-          <li class="nav__item"><a href="#work" class="nav__link">Work</a></li>
-          <li class="nav__item"><a href="#clients" class="nav__link">Clients</a></li>
-          <li class="nav__item">
-            <a href="#about" class="nav__link">About</a>
-          </li>
-          <li class="nav__item">
-            <a href="#contact" class="nav__link">Contact</a>
-          </li>
-        </ul>
-      </nav>
-    </div>
-    <div class="header__text-box row">
-      <div class="header__text">
-        <h1 class="heading-primary">
-          <!-- Replace the following name with your name -->
-          <span>Syed Ali Hussnain</span>
-        </h1>
-        <!-- Put a small paragraph about yourself -->
-        <p>A Web Developer based in Lahore, Pakistan.</p>
-        <a href="#contact" class="btn btn--pink">Get in touch</a>
-      </div>
-    </div>
-  </header>
+  <script type="text/babel">
+    function App() {
+      const images = [
+        { src: "img/Shaun Russelle Obsenares.jpg", name: "Shaun Russelle Obsenares" },
+        { src: "img/Kate Justine Pades.jpg", name: "Kate Justine Pades" },
+        { src: "img/Cristel Nicole Vergara.jpg", name: "Cristel Nicole Vergara" },
+        { src: "img/Cherly Vic Bakilid.jpg", name: "Cherly Vic Bakilid" },
+        { src: "img/Jhon Mark Morales.jpg", name: "Jhon Mark Morales" },
+      ];
 
-  <main role="main">
+      const projects = [
+        { title: "UYY BINALOT", desc: "A POS system designed for restaurants...", img: "img/binalot.png", link: "Binalots/Binalots/home.php" },
+        { title: "KJE PRINTING", desc: "A web app for home-based printing...", img: "img/kje.jpg", link: "Kje/admin/index.php" },
+        { title: "Mobile App", desc: "A mobile app using React Native and Expo.", img: "project3.jpg", link: "#" }
+      ];
 
-    <!-- ***** Work ***** -->
+      const profiles = {
+        "Shaun Russelle Obsenares": {
+          education: ["BS in Information Technology - Cavite State University- Imus Campus", "2022 - Present"],
+          skills: ["photoshop.png", "java.png", "php.png"],
+          resume: "resume/shaun.pdf"
+        },
+        "Kate Justine Pades": {
+          education: ["BS in Information Technology - Cavite State University- Imus Campus", "2022 - Present"],
+          skills: ["illustrator.png", "blender.png"],
+          resume: "resume/kate.pdf"
+        },
+        "Cristel Nicole Vergara": {
+          education: ["BS in Information Technology - Cavite State University- Imus Campus", "2022 - Present"],
+          skills: ["typescript.png", "nextjs.png"],
+          resume: "resume/cristel.pdf"
+        },
+        "Cherly Vic Bakilid": {
+          education: ["BS in Information Technology - Cavite State University- Imus Campus", "2022 - Present"],
+          skills: ["laravel.png", "mysql.png"],
+          resume: "resume/che.pdf"
+        },
+        "Jhon Mark Morales": {
+          education: ["BS in Information Technology - Cavite State University- Imus Campus", "2022 - Present"],
+          skills: ["threejs.png", "php.png"],
+          resume: "resume/jm.pdf"
+        }
+      };
 
-    <section class="work" id="work">
-      <div class="row">
-        <h2>My Work</h2>
-        <div class="work__boxes">
+      const getIdFromName = (name) => name.toLowerCase().replace(/\s+/g, '-');
 
-          <!-- Each div with the work__box class is a project. -->
+      return (
+        <div>
+          <nav>
+            <ul>
+              <li><a href="#about">About</a></li>
+              <li><a href="#projects">Projects</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+          </nav>
 
-          <div class="work__box">
-            <div class="work__text">
-              <h3>Portfolio Template</h3>
-              <p>
-                A free Open Source Portfolio for anyone to use for free.
-              </p>
-              <ul class="work__list">
-                <li>HTML</li>
-                <li>SCSS</li>
-                <li>JavaScript</li>
-                <li>Parcel</li>
-              </ul>
-
-              <div class="work__links">
-                <a href="https://nisar.surge.sh" target="_blank" class="link__text">
-                  Visit Site <span>&rarr;</span>
-                </a>
-                <a href="https://github.com/nisarhassan12/portfolio" title="View Source Code" target="_blank">
-                  <img src="./images/github.svg" class="work__code" alt="GitHub">
-                </a>
-              </div>
-            </div>
-            <div class="work__image-box">
-              <img src="./images/project-1.png" class="work__image" alt="Project 1" />
-            </div>
-          </div>
-
-          <div class="work__box">
-            <div class="work__text">
-              <h3>Calculator</h3>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod,
-                eius.
-              </p>
-              <ul class="work__list">
-                <li>React</li>
-                <li>Next.js</li>
-                <li>Node</li>
-                <li>MongoDB</li>
-              </ul>
-
-              <div class="work__links">
-                <a href="#" class="link__text">
-                  Visit Site <span>&rarr;</span>
-                </a>
-                <a href="#">
-                  <img src="./images/github.svg" class="work__code" title="View Source Code" alt="GitHub">
-                </a>
-              </div>
-            </div>
-            <div class="work__image-box">
-              <img src="./images/project-2.png" class="work__image" alt="Project 1" />
+          <div className="main-content">
+            <h1>PORTFOLIO</h1>
+            <div className="frames-row">
+              {images.map((img, index) => (
+                <div key={index} className="frame-container">
+                  <a href={`#${getIdFromName(img.name)}`} className="frame-name">
+                    <div className="string"></div>
+                    <div className="frame">
+                      <img src={img.src} alt={img.name} />
+                    </div>
+                    <div className="frame-name">{img.name}</div>
+                  </a>
+                </div>
+              ))}
             </div>
           </div>
 
-          <div class="work__box">
-            <div class="work__text">
-              <h3>Notificator</h3>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod,
-                eius.
-              </p>
-              <ul class="work__list">
-                <li>React</li>
-                <li>Next.js</li>
-                <li>Node</li>
-                <li>MongoDB</li>
-              </ul>
+          <section id="about" className="about-section">
+            <h2>About Us</h2>
+            <p>Welcome to our portfolio!</p>
+          </section>
 
-              <div class="work__links">
-                <a href="#" class="link__text">
-                  Visit Site <span>&rarr;</span>
-                </a>
-                <a href="#">
-                  <img src="./images/github.svg" class="work__code" title="View Source Code" alt="GitHub">
-                </a>
-              </div>
+          <section id="projects" className="projects-section">
+            <h2>Projects</h2>
+            <div className="projects-grid">
+              {projects.map((project, index) => (
+                <div key={index} className="project-card">
+                  <a
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{
+                      position: "absolute",
+                      top: 0,
+                      left: 0,
+                      width: "100%",
+                      height: "100%",
+                      opacity: 0,
+                      zIndex: 1,
+                    }}
+                  ></a>
+                  <img src={project.img} alt={project.title} />
+                  <div className="card-content">
+                    <h3>{project.title}</h3>
+                    <p>{project.desc}</p>
+                  </div>
+                </div>
+              ))}
             </div>
-            <div class="work__image-box">
-              <img src="./images/project-3.png" class="work__image" alt="Project 3" />
-            </div>
-          </div>
+          </section>
+
+          {Object.keys(profiles).map((profile, index) => (
+            <section key={index} id={getIdFromName(profile)} className="person-section">
+            <h2>{profile.charAt(0).toUpperCase() + profile.slice(1)}</h2>
+                        {}
+                        <img src={`img/${profile}.jpg`} alt={profile} style={{ width: '150px', borderRadius: '10px', marginTop: '20px' }} />
+                        <div className="about-box">
+                        <h2>Education</h2>
+                        <ul>  
+                            {profiles[profile].education.map((edu, i) => <li key={i}>{edu}</li>)}
+                        </ul>
+                        <h2>Technical Skills</h2>
+                           <div className="skills-icons">
+                              {profiles[profile].skills.map((skill, i) => (
+                                <img key={i} src={skill} alt={`Skill ${i}`} />
+                               ))}
+                               </div>
+                              {profiles[profile].resume && (
+                               <div style={{ marginTop: '20px' }}>
+                              <a href={profiles[profile].resume}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              style={{
+                              color: '#ffcc70',
+                              textDecoration: 'none',
+                              fontWeight: 'bold'
+                              }}
+                                   >
+                             📄 View Resume
+                              </a>
+         </div>
+              )}
         </div>
-      </div>
-    </section>
+        </section>
+        ))}
 
-    <!-- ***** Clients ***** -->
 
-    <section class="client" id="clients">
-      <div class="row">
-        <h2>Clients</h2>
-        <div class="client__logos">
-          <!-- Add logos of the clients or companies you'have worked with. -->
-          <img src="./images/ronjones.png" class="client__logo" alt="Company 2" />
-          <img src="./images/goldengrid.png" class="client__logo" alt="Company 3" />
-          <img src="./images/bullseye.png" class="client__logo" alt="Company 1" />
-          <img src="./images/mighty-furnitures.png" class="client__logo" alt="Company 1" />
-          <img src="./images/fastlane.png" class="client__logo" alt="Company 3" />
-          <img src="./images/chippy.png" class="client__logo" alt="Company 1" />
+          <section id="contact" className="contact-section">
+            <h2>Contact</h2>
+            <p>Email: <a href="mailto:ic.admin@cvsu.edu.ph">ic.admin@cvsu.edu.ph</a></p>
+            <p>Phone: <a href="tel:+12364370">0912345678</a></p>
+            <p>Follow us on <a href="#">LinkedIn</a> | <a href="#">GitHub</a></p>
+          </section>
         </div>
-      </div>
-    </section>
+      );
+    }
 
-    <!-- ***** About ***** -->
-
-    <section class="about" id="about">
-      <div class="row">
-        <h2>About Me</h2>
-        <div class="about__content">
-          <div class="about__text">
-            <!-- Replace the below paragraph with info about yourself -->
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos id
-              nostrum illo harum blanditiis, tenetur eum suscipit cupiditate
-              in vel, ex quam quidem quos mollitia labore aut sunt eius
-              ratione molestiae fuga veniam facere similique voluptate.
-            </p>
-            <!-- Provide a link to your resume -->
-            <a href="#" class="btn">My Resume</a>
-          </div>
-
-          <div class="about__photo-container">
-            <!-- Add a nice photo of yourself -->
-            <img class="about__photo" src="./images/syed-ali-hussnain.jpg" alt="" />
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <!-- ***** Contact ***** -->
-
-  <section class="contact" id="contact">
-    <div class="row">
-      <h2>Get in Touch</h2>
-      <div class="contact__info">
-        <p>
-          Are you looking for a fast-performing and user-friendly website to
-          represent your product or business? or looking for any kind of
-          consultation? or want to ask questions? or have some advice for me
-          or just want to say "Hi 👋" in any case feel free to Let me know. I
-          will do my best to respond back. 😊 The quickest way to reach out to
-          me is via an email.
-        </p>
-        <!-- Replace the email with yours -->
-        <a href="mailto:you@example.com" class="btn">you@example.com</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ***** Footer ***** -->
-
-  <footer role="contentinfo" class="footer">
-    <div class="row">
-      <!-- Update the links to point to your accounts -->
-      <ul class="footer__social-links">
-        <li class="footer__social-link-item">
-          <a href="https://twitter.com/nisarhassan12/" title="Link to Twitter Profile">
-            <img src="./images/twitter.svg" class="footer__social-image" alt="Twitter">
-          </a>
-        </li>
-        <li class="footer__social-link-item">
-          <a href="https://github.com/nisarhassan12/" title="Link to Github Profile">
-            <img src="./images/github.svg" class="footer__social-image" alt="Github">
-          </a>
-        </li>
-        <li class="footer__social-link-item">
-          <a href="https://codepen.io/nisar_hassan" title="Link to Codepen Profile">
-            <img src="./images/codepen.svg" class="footer__social-image" alt="Codepen">
-          </a>
-        </li>
-        <li class="footer__social-link-item">
-          <a href=https://www.linkedin.com/in/nisar-hassan-naqvi-413466199/">
-            <img src="./images/linkedin.svg" title="Link to Linkedin Profile" class="footer__social-image" alt="Linkedin">
-          </a>
-        </li>
-      </ul>
-
-      <!-- If you give me some credit by keeping the below paragraph, will be huge for me 😊 Thanks. -->
-      <p>
-        &copy; 2020 - Template designed & developed by <a href="https://nisar.dev" class="link">Nisar</a>.
-      </p>
-      <div class="footer__github-buttons">
-        <iframe
-          src="https://ghbtns.com/github-btn.html?user=nisarhassan12&repo=portfolio-template&type=watch&count=true"
-          frameborder="0" scrolling="0" width="170" height="20" title="Watch Portfolio Template on GitHub">
-        </iframe>
-      </div>
-    </div>
-  </footer>
-
-  <a href="#top" class="back-to-top" title="Back to Top">
-    <img src="./images/arrow-up.svg" alt="Back to Top" class="back-to-top__image"/>
-  </a>
-  <script src="./index.js"></script>
+    ReactDOM.render(<App />, document.getElementById("root"));
+  </script>
 </body>
 
 </html>
