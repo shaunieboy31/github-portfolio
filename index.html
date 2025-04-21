@@ -34,38 +34,39 @@
         { src: "img/jhon mark morales.jpg", name: "Jhon Mark Morales" }
       ];
 
+      const projects = [
+        { title: "UYY BINALOT", desc: "A POS system designed for restaurants...", img: "img/binalot.png", link: "Binalots/Binalots/home.php" },
+        { title: "KJE PRINTING", desc: "A web app for home-based printing...", img: "img/kje.jpg", link: "Kje/admin/index.php" },
+        { title: "Mobile App", desc: "A mobile app using React Native and Expo.", img: "project3.jpg", link: "#" }
+      ];
+
       const profiles = {
-  "Shaun Russelle Obsenares": {
-    img: "img/shaun russelle obsenares.jpg",
-    education: ["BS in Information Technology - Cavite State University- Imus Campus", "2022 - Present"],
-    skills: ["photoshop.png", "java.png", "php.png"],
-    resume: "resume/shaun.pdf"
-  },
-  "Kate Justine Pades": {
-    img: "img/kate justine pades.jpg",
-    education: ["BS in Information Technology - Cavite State University- Imus Campus", "2022 - Present"],
-    skills: ["illustrator.png", "blender.png"],
-    resume: "resume/kate.pdf"
-  },
-  "Cristel Nicole Vergara": {
-    img: "img/cristel nicole vergara.jpg",
-    education: ["BS in Information Technology - Cavite State University- Imus Campus", "2022 - Present"],
-    skills: ["typescript.png", "nextjs.png"],
-    resume: "resume/cristel.pdf"
-  },
-  "Cherly Vic Bakilid": {
-    img: "img/cherly vic bakilid.jpg",
-    education: ["BS in Information Technology - Cavite State University- Imus Campus", "2022 - Present"],
-    skills: ["laravel.png", "mysql.png"],
-    resume: "resume/che.pdf"
-  },
-  "Jhon Mark Morales": {
-    img: "img/jhon mark morales.jpg",
-    education: ["BS in Information Technology - Cavite State University- Imus Campus", "2022 - Present"],
-    skills: ["threejs.png", "php.png"],
-    resume: "resume/jm.pdf"
-  }
-};
+        "Shaun Russelle Obsenares": {
+          education: ["BS in Information Technology - Cavite State University- Imus Campus", "2022 - Present"],
+          skills: ["photoshop.png", "java.png", "php.png"],
+          resume: "resume/shaun.pdf"
+        },
+        "Kate Justine Pades": {
+          education: ["BS in Information Technology - Cavite State University- Imus Campus", "2022 - Present"],
+          skills: ["illustrator.png", "blender.png"],
+          resume: "resume/kate.pdf"
+        },
+        "Cristel Nicole Vergara": {
+          education: ["BS in Information Technology - Cavite State University- Imus Campus", "2022 - Present"],
+          skills: ["typescript.png", "nextjs.png"],
+          resume: "resume/cristel.pdf"
+        },
+        "Cherly Vic Bakilid": {
+          education: ["BS in Information Technology - Cavite State University- Imus Campus", "2022 - Present"],
+          skills: ["laravel.png", "mysql.png"],
+          resume: "resume/che.pdf"
+        },
+        "Jhon Mark Morales": {
+          education: ["BS in Information Technology - Cavite State University- Imus Campus", "2022 - Present"],
+          skills: ["threejs.png", "php.png"],
+          resume: "resume/jm.pdf"
+        }
+      };
 
       const getIdFromName = (name) => name.toLowerCase().replace(/\s+/g, '-');
 
@@ -131,19 +132,41 @@
           </section>
 
           {Object.keys(profiles).map((profile, index) => (
-  <section key={index} id={getIdFromName(profile)} className="person-section">
-    <h2>{profile}</h2>
-    <img
-      src={profiles[profile].img}
-      alt={profile}
-      style={{ width: "150px", borderRadius: "10px", marginTop: "20px" }}
-    />
-    <p style={{ marginTop: "10px", color: "#ccc" }}>
-      {profiles[profile].education[0]} <br />
-      {profiles[profile].education[1]}
-    </p>
-  </section>
-))}
+            <section key={index} id={getIdFromName(profile)} className="person-section">
+            <h2>{profile.charAt(0).toUpperCase() + profile.slice(1)}</h2>
+                        {}
+                        <img src={`img/${profile}.jpg`} alt={profile} style={{ width: '150px', borderRadius: '10px', marginTop: '20px' }} />
+                        <div className="about-box">
+                        <h2>Education</h2>
+                        <ul>  
+                            {profiles[profile].education.map((edu, i) => <li key={i}>{edu}</li>)}
+                        </ul>
+                        <h2>Technical Skills</h2>
+                           <div className="skills-icons">
+                              {profiles[profile].skills.map((skill, i) => (
+                                <img key={i} src={skill} alt={`Skill ${i}`} />
+                               ))}
+                               </div>
+                              {profiles[profile].resume && (
+                               <div style={{ marginTop: '20px' }}>
+                              <a href={profiles[profile].resume}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              style={{
+                              color: '#ffcc70',
+                              textDecoration: 'none',
+                              fontWeight: 'bold'
+                              }}
+                                   >
+                             📄 View Resume
+                              </a>
+         </div>
+              )}
+        </div>
+        </section>
+        ))}
+
+
           <section id="contact" className="contact-section">
             <h2>Contact</h2>
             <p>Email: <a href="mailto:ic.admin@cvsu.edu.ph">ic.admin@cvsu.edu.ph</a></p>
