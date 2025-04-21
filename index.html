@@ -27,7 +27,7 @@
   <script type="text/babel">
     function App() {
       const images = [
-        { src: "img/shaun russelle obsenares.jpg", name: "Shaun Russelle Obsenares", id: "shaun" },
+        { src: "img/shaun russelle obsenares.jpg", name: "Shaun Russelle Obsenares"},
         { src: "img/kate justine pades.jpg", name: "Kate Justine Pades"},
         { src: "img/cristel nicole vergara.jpg", name: "Cristel Nicole Vergara" },
         { src: "img/cherly vic bakilid.jpg", name: "Cherly Vic Bakilid" },
@@ -41,7 +41,7 @@
       ];
 
       const profiles = {
-        "shaun": {
+        "Shaun Russelle Obsenares": {
           education: ["BS in Information Technology - Cavite State University- Imus Campus", "2022 - Present"],
           skills: ["photoshop.png", "java.png", "php.png"],
           resume: "resume/shaun.pdf"
@@ -132,41 +132,45 @@
           </section>
 
           {Object.keys(profiles).map((profile, index) => (
-            <section key={index} id={getIdFromName(profile)} className="person-section">
-            <h2>{profile.charAt(0).toUpperCase() + profile.slice(1)}</h2>
-                        {}
-                        <img src={`img/${profile}.jpg`} alt={profile} style={{ width: '150px', borderRadius: '10px', marginTop: '20px' }} />
-                        <div className="about-box">
-                        <h2>Education</h2>
-                        <ul>  
-                            {profiles[profile].education.map((edu, i) => <li key={i}>{edu}</li>)}
-                        </ul>
-                        <h2>Technical Skills</h2>
-                           <div className="skills-icons">
-                              {profiles[profile].skills.map((skill, i) => (
-                                <img key={i} src={skill} alt={`Skill ${i}`} />
-                               ))}
-                               </div>
-                              {profiles[profile].resume && (
-                               <div style={{ marginTop: '20px' }}>
-                              <a href={profiles[profile].resume}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              style={{
-                              color: '#ffcc70',
-                              textDecoration: 'none',
-                              fontWeight: 'bold'
-                              }}
-                                   >
-                             📄 View Resume
-                              </a>
-         </div>
-              )}
-        </div>
-        </section>
+  <section key={index} id={getIdFromName(profile)} className="person-section">
+    <h2>{profile}</h2>
+    <img
+      src={profiles[profile].img}
+      alt={profile}
+      style={{ width: "150px", borderRadius: "10px", marginTop: "20px" }}
+    />
+    <div className="about-box">
+      <h2>Education</h2>
+      <ul>
+        {profiles[profile].education.map((edu, i) => (
+          <li key={i}>{edu}</li>
         ))}
-
-
+      </ul>
+      <h2>Technical Skills</h2>
+      <div className="skills-icons">
+        {profiles[profile].skills.map((skill, i) => (
+          <img key={i} src={`img/${skill}`} alt={`Skill ${i}`} />
+        ))}
+      </div>
+      {profiles[profile].resume && (
+        <div style={{ marginTop: "20px" }}>
+          <a
+            href={profiles[profile].resume}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              color: "#ffcc70",
+              textDecoration: "none",
+              fontWeight: "bold"
+            }}
+          >
+            📄 View Resume
+          </a>
+        </div>
+      )}
+    </div>
+  </section>
+))}
           <section id="contact" className="contact-section">
             <h2>Contact</h2>
             <p>Email: <a href="mailto:ic.admin@cvsu.edu.ph">ic.admin@cvsu.edu.ph</a></p>
