@@ -1,147 +1,148 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>React Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body class="bg-black text-white font-serif">
+    <div id="root"></div>
+    <script type="text/babel">
+      function App() {
+        const images = [
+          { src: "img/Shaun Russelle Obsenares.jpg", name: "Shaun Russelle Obsenares" },
+          { src: "img/Kate Justine Pades.jpg", name: "Kate Justine Pades" },
+          { src: "img/Cristel Nicole Vergara.jpg", name: "Cristel Nicole Vergara" },
+          { src: "img/Cherly Vic Bakilid.jpg", name: "Cherly Vic Bakilid" },
+          { src: "img/Jhon Mark Morales.jpg", name: "Jhon Mark Morales" },
+        ];
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="shortcut icon" type="image/png" href="./images/favicon.png" />
-  <script src="https://cdn.tailwindcss.com"></script>
-  <title>Team Portfolio</title>
-</head>
+        const projects = [
+          { title: "UYY BINALOT", desc: "A POS system designed for restaurants...", img: "img/binalot.png", link: "Binalots/Binalots/home.php" },
+          { title: "KJE PRINTING", desc: "A web app for home-based printing...", img: "img/kje.jpg", link: "Kje/admin/index.php" },
+          { title: "Mobile App", desc: "A mobile app using React Native and Expo.", img: "project3.jpg", link: "#" },
+        ];
 
-<body class="bg-gray-900 text-white font-serif">
-  <div id="root"></div>
+        const profiles = {
+          "Shaun Russelle Obsenares": {
+            education: ["BS in Information Technology - Cavite State University- Imus Campus", "2022 - Present"],
+            skills: ["photoshop.png", "java.png", "php.png"],
+            resume: "resume/shaun.pdf"
+          },
+          "Kate Justine Pades": {
+            education: ["BS in Information Technology - Cavite State University- Imus Campus", "2022 - Present"],
+            skills: ["illustrator.png", "blender.png"],
+            resume: "resume/kate.pdf"
+          },
+          "Cristel Nicole Vergara": {
+            education: ["BS in Information Technology - Cavite State University- Imus Campus", "2022 - Present"],
+            skills: ["typescript.png", "nextjs.png"],
+            resume: "resume/cristel.pdf"
+          },
+          "Cherly Vic Bakilid": {
+            education: ["BS in Information Technology - Cavite State University- Imus Campus", "2022 - Present"],
+            skills: ["laravel.png", "mysql.png"],
+            resume: "resume/che.pdf"
+          },
+          "Jhon Mark Morales": {
+            education: ["BS in Information Technology - Cavite State University- Imus Campus", "2022 - Present"],
+            skills: ["threejs.png", "php.png"],
+            resume: "resume/jm.pdf"
+          }
+        };
 
-  <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
-  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
-  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+        const getIdFromName = (name) => name.toLowerCase().replace(/\s+/g, '-');
 
-  <script type="text/babel">
-    function App() {
-      const images = [
-        { src: "img/shaun russelle obsenares.jpg", name: "Shaun Russelle Obsenares" },
-        { src: "img/kate justine pades.jpg", name: "Kate Justine Pades" },
-        { src: "img/cristel nicole vergara.jpg", name: "Cristel Nicole Vergara" },
-        { src: "img/cherly vic bakilid.jpg", name: "Cherly Vic Bakilid" },
-        { src: "img/jhon mark morales.jpg", name: "Jhon Mark Morales" }
-      ];
+        return (
+          <div>
+            <nav className="sticky top-0 bg-black py-5 z-10 text-center">
+              <ul className="flex justify-center gap-10">
+                <li><a href="#about" className="hover:text-gray-400">About</a></li>
+                <li><a href="#projects" className="hover:text-gray-400">Projects</a></li>
+                <li><a href="#contact" className="hover:text-gray-400">Contact</a></li>
+              </ul>
+            </nav>
 
-      const projects = [
-        { title: "UYY BINALOT", desc: "A POS system designed for restaurants...", img: "img/binalot.png", link: "Binalots/Binalots/home.php" },
-        { title: "KJE PRINTING", desc: "A web app for home-based printing...", img: "img/kje.jpg", link: "Kje/admin/index.php" },
-        { title: "Mobile App", desc: "A mobile app using React Native and Expo.", img: "project3.jpg", link: "#" }
-      ];
-
-      const profiles = {
-        "Shaun Russelle Obsenares": {
-          education: ["BS in Information Technology - Cavite State University- Imus Campus", "2022 - Present"],
-          skills: ["photoshop.png", "java.png", "php.png"],
-          resume: "resume/shaun.pdf"
-        },
-        "Kate Justine Pades": {
-          education: ["BS in Information Technology - Cavite State University- Imus Campus", "2022 - Present"],
-          skills: ["illustrator.png", "blender.png"],
-          resume: "resume/pades.pdf"
-        },
-        "Cristel Nicole Vergara": {
-          education: ["BS in Information Technology - Cavite State University- Imus Campus", "2022 - Present"],
-          skills: ["typescript.png", "nextjs.png"],
-          resume: "resume/cristel.pdf"
-        },
-        "Cherly Vic Bakilid": {
-          education: ["BS in Information Technology - Cavite State University- Imus Campus", "2022 - Present"],
-          skills: ["laravel.png", "mysql.png"],
-          resume: "resume/che.pdf"
-        },
-        "Jhon Mark Morales": {
-          education: ["BS in Information Technology - Cavite State University- Imus Campus", "2022 - Present"],
-          skills: ["threejs.png", "php.png"],
-          resume: "resume/jm.pdf"
-        }
-      };
-
-      const getIdFromName = (name) => name.toLowerCase().replace(/\s+/g, '-');
-
-      return (
-        <div>
-          {/* Navigation */}
-          <nav class="w-full py-5 text-center sticky top-0 bg-gray-900 z-10">
-            <ul class="flex justify-center gap-10">
-              <li><a href="#about" class="text-white hover:text-gray-400">About</a></li>
-              <li><a href="#projects" class="text-white hover:text-gray-400">Projects</a></li>
-              <li><a href="#contact" class="text-white hover:text-gray-400">Contact</a></li>
-            </ul>
-          </nav>
-
-          {/* Main Content */}
-          <div class="flex flex-col items-center mt-16">
-            <h1 class="text-4xl tracking-wide mb-10">PORTFOLIO</h1>
-            <div class="flex flex-wrap gap-10 justify-center">
-              {images.map((img, index) => (
-                <div key={index} class="relative flex flex-col items-center transition-transform transform hover:scale-105">
-                  <a href={`#${getIdFromName(img.name)}`} class="text-yellow-400 font-bold text-center">
-                    <div class="w-40 h-52 bg-white border-4 border-gray-800 shadow-lg">
-                      <img src={img.src} alt={img.name} class="w-full h-full object-cover" />
-                    </div>
-                    <div class="mt-2">{img.name}</div>
-                  </a>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* About Section */}
-          <section id="about" class="py-20 px-10 text-center">
-            <h2 class="text-3xl text-yellow-400 mb-5">About Us</h2>
-            <p class="text-gray-300">Welcome to our portfolio!</p>
-          </section>
-
-          {/* Projects Section */}
-          <section id="projects" class="py-20 px-10">
-            <h2 class="text-3xl text-yellow-400 text-center mb-10">Projects</h2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
-              {projects.map((project, index) => (
-                <div key={index} class="relative bg-gray-800 border border-gray-700 rounded-lg overflow-hidden transition-transform transform hover:scale-105">
-                  <a href={project.link} target="_blank" rel="noopener noreferrer" class="absolute inset-0 opacity-0 z-10"></a>
-                  <img src={project.img} alt={project.title} class="w-full h-44 object-cover" />
-                  <div class="p-5">
-                    <h3 class="text-yellow-400 mb-2">{project.title}</h3>
-                    <p class="text-gray-300 text-sm">{project.desc}</p>
+            <div className="flex flex-col items-center mt-16">
+              <h1 className="text-5xl tracking-wider mb-10">PORTFOLIO</h1>
+              <div className="flex flex-wrap justify-center gap-10">
+                {images.map((img, index) => (
+                  <div key={index} className="flex flex-col items-center transform transition-transform hover:scale-105">
+                    <a href={`#${getIdFromName(img.name)}`} className="text-center">
+                      <div className="w-1 h-10 bg-white"></div>
+                      <div className="w-40 h-52 border-4 border-gray-700 shadow-lg animate-[swing_3s_ease-in-out_infinite]">
+                        <img src={img.src} alt={img.name} className="w-full h-full object-cover" />
+                      </div>
+                      <div className="mt-2 text-yellow-300 font-bold">{img.name}</div>
+                    </a>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
-          </section>
 
-          {/* Profiles Section */}
-          {Object.keys(profiles).map((profile, index) => (
-            <section key={index} id={getIdFromName(profile)} class={`py-20 px-5 text-center ${index % 2 === 0 ? 'bg-gray-800' : 'bg-gray-900'}`}>
-              <h2 class="text-yellow-400 text-2xl mb-5">{profile}</h2>
-              <img src={`img/${profile}.jpg`} alt={profile} class="w-36 h-36 rounded-lg mx-auto mb-5" />
-              <div class="text-gray-300">
-                <h3 class="text-lg mb-2">Education</h3>
-                <ul class="list-disc list-inside">
-                  {profiles[profile].education.map((edu, i) => (
-                    <li key={i}>{edu}</li>
-                  ))}
-                </ul>
+            <section id="about" className="py-20 px-10 text-center">
+              <h2 className="text-3xl text-yellow-300 mb-4">About Us</h2>
+              <p className="text-gray-300">Welcome to our portfolio!</p>
+            </section>
+
+            <section id="projects" className="py-20 px-10">
+              <h2 className="text-3xl text-yellow-300 text-center mb-10">Projects</h2>
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+                {projects.map((project, index) => (
+                  <div key={index} className="bg-zinc-800 rounded-lg overflow-hidden transform transition-transform hover:scale-105 shadow-lg">
+                    <a href={project.link} target="_blank" rel="noopener noreferrer" className="block w-full h-full">
+                      <img src={project.img} alt={project.title} className="w-full h-44 object-cover" />
+                      <div className="p-5">
+                        <h3 className="text-yellow-300 mb-2">{project.title}</h3>
+                        <p className="text-gray-300 text-sm">{project.desc}</p>
+                      </div>
+                    </a>
+                  </div>
+                ))}
               </div>
             </section>
-          ))}
 
-          {/* Contact Section */}
-          <section id="contact" class="bg-gray-800 text-center py-20 px-10">
-            <h2 class="text-3xl text-yellow-400 mb-10">Contact</h2>
-            <p class="text-gray-300 mb-2">Email: <a href="mailto:ic.admin@cvsu.edu.ph" class="text-yellow-400 hover:underline">ic.admin@cvsu.edu.ph</a></p>
-            <p class="text-gray-300 mb-2">Phone: <a href="tel:+12364370" class="text-yellow-400 hover:underline">0912345678</a></p>
-            <p class="text-gray-300">Follow us on <a href="#" class="text-yellow-400 hover:underline">LinkedIn</a> | <a href="#" class="text-yellow-400 hover:underline">GitHub</a></p>
-          </section>
-        </div>
-      );
-    }
+            {Object.keys(profiles).map((profile, index) => (
+              <section key={index} id={getIdFromName(profile)} className={`py-20 px-5 text-center ${index % 2 === 0 ? 'bg-zinc-900' : 'bg-black'}`}>
+                <h2 className="text-yellow-300 text-2xl mb-4">{profile}</h2>
+                <img src={`img/${profile}.jpg`} alt={profile} className="w-36 rounded-lg mx-auto mt-4" />
+                <div className="mt-6">
+                  <h2 className="text-yellow-300 text-xl mb-2">Education</h2>
+                  <ul className="text-gray-300">
+                    {profiles[profile].education.map((edu, i) => (
+                      <li key={i}>{edu}</li>
+                    ))}
+                  </ul>
+                  <h2 className="text-yellow-300 text-xl mt-6 mb-2">Technical Skills</h2>
+                  <div className="flex justify-center gap-4 flex-wrap mt-4">
+                    {profiles[profile].skills.map((skill, i) => (
+                      <img key={i} src={skill} alt={`Skill ${i}`} className="w-10 h-10 filter invert hover:scale-110 transition-transform" />
+                    ))}
+                  </div>
+                  {profiles[profile].resume && (
+                    <div className="mt-6">
+                      <a href={profiles[profile].resume} target="_blank" rel="noopener noreferrer" className="text-yellow-300 font-bold hover:underline">📄 View Resume</a>
+                    </div>
+                  )}
+                </div>
+              </section>
+            ))}
 
-    ReactDOM.render(<App />, document.getElementById("root"));
-  </script>
-</body>
+            <section id="contact" className="bg-zinc-900 text-center py-20 px-10">
+              <h2 className="text-3xl text-yellow-300 mb-10">Contact</h2>
+              <p className="text-gray-300 mb-2">Email: <a href="mailto:ic.admin@cvsu.edu.ph" className="text-yellow-300 hover:underline">ic.admin@cvsu.edu.ph</a></p>
+              <p className="text-gray-300 mb-2">Phone: <a href="tel:+12364370" className="text-yellow-300 hover:underline">0912345678</a></p>
+              <p className="text-gray-300">Follow us on <a href="#" className="text-yellow-300 hover:underline">LinkedIn</a> | <a href="#" className="text-yellow-300 hover:underline">GitHub</a></p>
+            </section>
+          </div>
+        );
+      }
 
+      ReactDOM.render(<App />, document.getElementById("root"));
+    </script>
+  </body>
 </html>
