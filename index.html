@@ -5,19 +5,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="shortcut icon" type="image/png" href="./images/favicon.png" />
-
-  <!-- Put your site title here -->
-  <title>
-    Team Portfolio
-  </title>
-
-  <meta name="description" content="Add small description of yourslef.">
-  <!-- Add some coding keywords below, Ex: (React, CSS etc) -->
-  <meta name="keywords" content="Put your name, skills and some coding keywords" />
-  <link rel="stylesheet" href="index.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>Team Portfolio</title>
 </head>
 
-<body>
+<body class="bg-gray-900 text-white font-serif">
   <div id="root"></div>
 
   <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
@@ -27,8 +19,8 @@
   <script type="text/babel">
     function App() {
       const images = [
-        { src: "img/shaun russelle obsenares.jpg", name: "Shaun Russelle Obsenares"},
-        { src: "img/kate justine pades.jpg", name: "Kate Justine Pades"},
+        { src: "img/shaun russelle obsenares.jpg", name: "Shaun Russelle Obsenares" },
+        { src: "img/kate justine pades.jpg", name: "Kate Justine Pades" },
         { src: "img/cristel nicole vergara.jpg", name: "Cristel Nicole Vergara" },
         { src: "img/cherly vic bakilid.jpg", name: "Cherly Vic Bakilid" },
         { src: "img/jhon mark morales.jpg", name: "Jhon Mark Morales" }
@@ -49,7 +41,7 @@
         "Kate Justine Pades": {
           education: ["BS in Information Technology - Cavite State University- Imus Campus", "2022 - Present"],
           skills: ["illustrator.png", "blender.png"],
-          resume: "resume/kate.pdf"
+          resume: "resume/pades.pdf"
         },
         "Cristel Nicole Vergara": {
           education: ["BS in Information Technology - Cavite State University- Imus Campus", "2022 - Present"],
@@ -72,106 +64,77 @@
 
       return (
         <div>
-          <nav>
-            <ul>
-              <li><a href="#about">About</a></li>
-              <li><a href="#projects">Projects</a></li>
-              <li><a href="#contact">Contact</a></li>
+          {/* Navigation */}
+          <nav class="w-full py-5 text-center sticky top-0 bg-gray-900 z-10">
+            <ul class="flex justify-center gap-10">
+              <li><a href="#about" class="text-white hover:text-gray-400">About</a></li>
+              <li><a href="#projects" class="text-white hover:text-gray-400">Projects</a></li>
+              <li><a href="#contact" class="text-white hover:text-gray-400">Contact</a></li>
             </ul>
           </nav>
 
-          <div className="main-content">
-            <h1>PORTFOLIO</h1>
-            <div className="frames-row">
+          {/* Main Content */}
+          <div class="flex flex-col items-center mt-16">
+            <h1 class="text-4xl tracking-wide mb-10">PORTFOLIO</h1>
+            <div class="flex flex-wrap gap-10 justify-center">
               {images.map((img, index) => (
-                <div key={index} className="frame-container">
-                  <a href={`#${getIdFromName(img.name)}`} className="frame-name">
-                    <div className="string"></div>
-                    <div className="frame">
-                      <img src={img.src} alt={img.name} />
+                <div key={index} class="relative flex flex-col items-center transition-transform transform hover:scale-105">
+                  <a href={`#${getIdFromName(img.name)}`} class="text-yellow-400 font-bold text-center">
+                    <div class="w-40 h-52 bg-white border-4 border-gray-800 shadow-lg">
+                      <img src={img.src} alt={img.name} class="w-full h-full object-cover" />
                     </div>
-                    <div className="frame-name">{img.name}</div>
+                    <div class="mt-2">{img.name}</div>
                   </a>
                 </div>
               ))}
             </div>
           </div>
 
-          <section id="about" className="about-section">
-            <h2>About Us</h2>
-            <p>Welcome to our portfolio!</p>
+          {/* About Section */}
+          <section id="about" class="py-20 px-10 text-center">
+            <h2 class="text-3xl text-yellow-400 mb-5">About Us</h2>
+            <p class="text-gray-300">Welcome to our portfolio!</p>
           </section>
 
-          <section id="projects" className="projects-section">
-            <h2>Projects</h2>
-            <div className="projects-grid">
+          {/* Projects Section */}
+          <section id="projects" class="py-20 px-10">
+            <h2 class="text-3xl text-yellow-400 text-center mb-10">Projects</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
               {projects.map((project, index) => (
-                <div key={index} className="project-card">
-                  <a
-                    href={project.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{
-                      position: "absolute",
-                      top: 0,
-                      left: 0,
-                      width: "100%",
-                      height: "100%",
-                      opacity: 0,
-                      zIndex: 1,
-                    }}
-                  ></a>
-                  <img src={project.img} alt={project.title} />
-                  <div className="card-content">
-                    <h3>{project.title}</h3>
-                    <p>{project.desc}</p>
+                <div key={index} class="relative bg-gray-800 border border-gray-700 rounded-lg overflow-hidden transition-transform transform hover:scale-105">
+                  <a href={project.link} target="_blank" rel="noopener noreferrer" class="absolute inset-0 opacity-0 z-10"></a>
+                  <img src={project.img} alt={project.title} class="w-full h-44 object-cover" />
+                  <div class="p-5">
+                    <h3 class="text-yellow-400 mb-2">{project.title}</h3>
+                    <p class="text-gray-300 text-sm">{project.desc}</p>
                   </div>
                 </div>
               ))}
             </div>
           </section>
 
+          {/* Profiles Section */}
           {Object.keys(profiles).map((profile, index) => (
-            <section key={index} id={getIdFromName(profile)} className="person-section">
-            <h2>{profile.charAt(0).toUpperCase() + profile.slice(1)}</h2>
-                        {}
-                        <img src={`img/${profile}.jpg`} alt={profile} style={{ width: '150px', borderRadius: '10px', marginTop: '20px' }} />
-                        <div className="about-box">
-                        <h2>Education</h2>
-                        <ul>  
-                            {profiles[profile].education.map((edu, i) => <li key={i}>{edu}</li>)}
-                        </ul>
-                        <h2>Technical Skills</h2>
-                           <div className="skills-icons">
-                              {profiles[profile].skills.map((skill, i) => (
-                                <img key={i} src={skill} alt={`Skill ${i}`} />
-                               ))}
-                               </div>
-                              {profiles[profile].resume && (
-                               <div style={{ marginTop: '20px' }}>
-                              <a href={profiles[profile].resume}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              style={{
-                              color: '#ffcc70',
-                              textDecoration: 'none',
-                              fontWeight: 'bold'
-                              }}
-                                   >
-                             📄 View Resume
-                              </a>
-         </div>
-              )}
-        </div>
-        </section>
-        ))}
+            <section key={index} id={getIdFromName(profile)} class={`py-20 px-5 text-center ${index % 2 === 0 ? 'bg-gray-800' : 'bg-gray-900'}`}>
+              <h2 class="text-yellow-400 text-2xl mb-5">{profile}</h2>
+              <img src={`img/${profile}.jpg`} alt={profile} class="w-36 h-36 rounded-lg mx-auto mb-5" />
+              <div class="text-gray-300">
+                <h3 class="text-lg mb-2">Education</h3>
+                <ul class="list-disc list-inside">
+                  {profiles[profile].education.map((edu, i) => (
+                    <li key={i}>{edu}</li>
+                  ))}
+                </ul>
+              </div>
+            </section>
+          ))}
 
-
-          <section id="contact" className="contact-section">
-            <h2>Contact</h2>
-            <p>Email: <a href="mailto:ic.admin@cvsu.edu.ph">ic.admin@cvsu.edu.ph</a></p>
-            <p>Phone: <a href="tel:+12364370">0912345678</a></p>
-            <p>Follow us on <a href="#">LinkedIn</a> | <a href="#">GitHub</a></p>
+          {/* Contact Section */}
+          <section id="contact" class="bg-gray-800 text-center py-20 px-10">
+            <h2 class="text-3xl text-yellow-400 mb-10">Contact</h2>
+            <p class="text-gray-300 mb-2">Email: <a href="mailto:ic.admin@cvsu.edu.ph" class="text-yellow-400 hover:underline">ic.admin@cvsu.edu.ph</a></p>
+            <p class="text-gray-300 mb-2">Phone: <a href="tel:+12364370" class="text-yellow-400 hover:underline">0912345678</a></p>
+            <p class="text-gray-300">Follow us on <a href="#" class="text-yellow-400 hover:underline">LinkedIn</a> | <a href="#" class="text-yellow-400 hover:underline">GitHub</a></p>
           </section>
         </div>
       );
