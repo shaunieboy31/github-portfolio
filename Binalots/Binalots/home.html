@@ -50,7 +50,7 @@
   <div class="row">
     <div class="col-md-12 text-center mb-3">
       <div class="panel">
-        <strong>Receipt No:</strong> <span id="receiptNumber"><?= date('YmdHis') ?></span><br>
+        <strong>Receipt No:</strong> <span id="receiptNumber"></span><br>
         Operator: <strong id="operatorName">Admin</strong>
       </div>
     </div>
@@ -87,7 +87,7 @@
         <button class="btn btn-green" onclick="loadCategory('sizzling')">SIZZLING PLATES</button>
         <button class="btn btn-green" onclick="loadCategory('beverages')">BEVERAGES</button>
         <button class="btn btn-green" onclick="loadCategory('addons')">ADD-ONS</button>
-        <a href="login.php" class="btn btn-secondary">LOG OUT</a>
+        <button class="btn btn-secondary">LOG OUT</button>
       </div>
     </div>
 
@@ -102,7 +102,7 @@
     <!-- Total and Payment -->
     <div class="col-md-3">
       <div class="panel">
-        <h5>Total: ₱<span id="total"><?= number_format($totalAmount ?? 0, 2) ?></span></h5>
+        <h5>Total: ₱<span id="total">0.00</span></h5>
         <button class="btn btn-green w-100 mt-3" onclick="showPaymentModal()">Proceed to Payment</button>
         <button class="btn btn-warning w-100 mt-3" onclick="promptPassword()">Edit Orders</button>
       </div>
@@ -164,8 +164,8 @@
   const totalElement = document.getElementById('total');
   const itemTable = document.getElementById('itemTable');
   const bestSellers = document.getElementById('bestSellers');
-  let total = <?= json_encode($totalAmount ?? 0) ?>;
-  let order = <?= json_encode($_SESSION['order'] ?? []) ?>;
+  let total = 0;
+  let order = [];
   let canEdit = false;
 
   const categories = {
@@ -200,8 +200,111 @@
     ],
   };
 
-  // JavaScript functions (unchanged from earlier)
-  // Includes loadCategory, setQtyAndAddItem, updateTable, updateTotal, showPaymentModal, changePaymentMethod, completePayment, updateItemQty, deleteItem, promptPassword, validatePassword
+  function loadCategory(category) {
+    bestSellers.innerHTML = '';
+    categories[category].forEach(item => {
+      const itemDiv = document.createElement('div');
+      itemDiv.classList.add('col-6', 'mb-2');
+      itemDiv.innerHTML = `<button class="btn btn-dark w-100" onclick="setQtyAndAddItem('${item.name}', ${item.price})">${item.name} - ₱${item.price}</button>`;
+      bestSellers.appendChild(itemDiv);
+    });
+  }
+
+  function setQtyAndAddItem(name, price) {
+    let qty = 1;
+    let itemFound = false;
+
+    order.forEach((item, index) => {
+      if (item.name === name) {
+        itemFound = true;
+        qty = item.qty + 1;
+        order[index].qty = qty;
+      }
+    });
+
+    if (!itemFound) {
+      order.push({ name, price, qty });
+    }
+
+    updateTable();
+    updateTotal();
+  }
+
+  function updateTable() {
+    itemTable.innerHTML = '';
+    order.forEach((item, index) => {
+      const row = document.createElement('tr');
+      row.innerHTML = `
+        <td>#${index + 1}</td>
+        <td>${item.name}</td>
+        <td><input type="number" class="form-control input-qty" value="${item.qty}" min="1" onchange="updateItemQty(${index}, this.value)" ${canEdit ? '' : 'disabled'} /></td>
+        <td>₱${(item.price * item.qty).toFixed(2)}</td>
+        <td>
+          <button class="btn btn-danger" onclick="deleteItem(${index})" ${canEdit ? '' : 'disabled'}>Delete</button>
+        </td>
+      `;
+      itemTable.appendChild(row);
+    });
+    if (order.length === 0) {
+      itemTable.innerHTML = '<tr id="emptyRow"><td colspan="5" class="text-center">No items yet</td></tr>';
+    }
+  }
+
+  function updateTotal() {
+    total = order.reduce((sum, item) => sum + item.price * item.qty, 0);
+    totalElement.textContent = total.toFixed(2);
+    document.getElementById('modalTotal').textContent = total.toFixed(2);
+  }
+
+  function showPaymentModal() {
+    const paymentModal = new bootstrap.Modal(document.getElementById('paymentModal'));
+    paymentModal.show();
+  }
+
+  function changePaymentMethod() {
+    const paymentMethod = document.getElementById('paymentMethod').value;
+    const paymentDetails = document.getElementById('paymentDetails');
+    paymentDetails.innerHTML = '';
+
+    if (paymentMethod === 'cash') {
+      paymentDetails.innerHTML = `
+        <label for="cashAmount">Cash Amount:</label>
+        <input type="number" id="cashAmount" class="form-control" placeholder="Enter cash amount" />
+      `;
+    } else if (paymentMethod === 'gcash') {
+      paymentDetails.innerHTML = `
+        <label for="gcashReference">GCash Reference Number:</label>
+        <input type="text" id="gcashReference" class="form-control" placeholder="Enter GCash reference number" />
+      `;
+    } else if (paymentMethod === 'card') {
+      paymentDetails.innerHTML = `
+        <label for="cardNumber">Card Number:</label>
+        <input type="text" id="cardNumber" class="form-control" placeholder="Enter card number" />
+      `;
+    }
+  }
+
+  function completePayment() {
+    alert('Payment completed successfully!');
+    order = [];
+    updateTable();
+    updateTotal();
+  }
+
+  function promptPassword() {
+    const passwordModal = new bootstrap.Modal(document.getElementById('passwordModal'));
+    passwordModal.show();
+  }
+
+  function validatePassword() {
+    const passwordInput = document.getElementById('passwordInput').value;
+    if (passwordInput === 'admin') {
+      canEdit = true;
+      alert('Edit mode enabled!');
+    } else {
+      alert('Invalid password!');
+    }
+  }
 
   loadCategory('silog');
   updateTable();
