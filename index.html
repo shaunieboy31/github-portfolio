@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>React Portfolio</title>
 
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
       html {
@@ -17,19 +16,155 @@
         50% { transform: rotate(-3deg); }
         100% { transform: rotate(3deg); }
       }
+
     </style>
   </head>
   <body class="bg-[#0f0f0f] text-white font-serif overflow-y-auto">
-    <!-- React App Root -->
     <div id="root"></div>
-    
 
-    <!-- React and Babel -->
-    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
-    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel">
+      function App() {
+        const images = [
+          { src: "img/shaun russelle obsenares.jpg", name: "Shaun Russelle Obsenares" },
+          { src: "img/kate justine pades.jpg", name: "Kate Justine Pades" },
+          { src: "img/cristel nicole vergara.jpg", name: "Cristel Nicole Vergara" },
+          { src: "img/cherly vic bakilid.jpg", name: "Cherly Vic Bakilid" },
+          { src: "img/jhon mark morales.jpg", name: "Jhon Mark Morales" },
+        ];
 
-    <!-- Your React App -->
-    <script type="module" src="./index.js"></script>
+        const projects = [
+          { title: "UYY BINALOT", desc: "A POS system designed for restaurants...", img: "img/binalot.png", link: "Binalots/Binalots/home.html" },
+          { title: "KJE PRINTING", desc: "A web app for home-based printing...", img: "img/kje.jpg", link: "Kje/admin/index.php" },
+          { title: "Mobile App", desc: "A mobile app using React Native and Expo.", img: "project3.jpg", link: "#" }
+        ];
+
+        const profiles = {
+          "Shaun Russelle Obsenares": { role: ["Full Stack Developer"] , 
+          education: ["Imus Pilot Elementary School (2010 - 2016)","Bacoor National High School (2016 - 2020)","Victorious Christian Montessori College Inc. (2020 - 2022)","BS in Information Technology - Cavite State University- Imus Campus (2022 - Present)"], 
+          skills: ["Photoshop", "Java", "Php", "Github"], 
+          resume: "resume/shaun.pdf", 
+          image: "img/shaun russelle obsenares.jpg" },
+
+          "Kate Justine Pades": { role: ["Full Stack Developer"] , 
+          education: ["BS in Information Technology - Cavite State University- Imus Campus", "2022 - Present"], 
+          skills: ["Photoshop", "Java", "Php", "Github"], 
+          resume: "resume/kate.pdf", 
+          image: "img/kate justine pades.jpg" },
+
+          "Cristel Nicole Vergara": { role: ["Full Stack Developer"] , 
+          education: ["BS in Information Technology - Cavite State University- Imus Campus", "2022 - Present"], 
+          skills: ["Photoshop", "Java", "Php", "Github"], 
+          resume: "resume/cristel.pdf", 
+          image: "img/cristel nicole vergara.jpg" },
+
+          "Cherly Vic Bakilid": { role: ["Full Stack Developer"] , 
+          education: ["BS in Information Technology - Cavite State University- Imus Campus", "2022 - Present"], 
+          skills: ["Photoshop", "Java", "Php", "Github"], 
+          resume: "resume/che.pdf", 
+          image: "img/cherly vic bakilid.jpg" },
+
+          "Jhon Mark Morales": { role: ["Full Stack Developer"] , 
+          education: ["BS in Information Technology - Cavite State University- Imus Campus", "2022 - Present"], 
+          skills: ["Photoshop", "Java", "Php", "Github"], 
+          resume: "resume/jm.pdf", 
+          image: "img/jhon mark morales.jpg" }
+          
+        };
+
+        const getIdFromName = (name) => name.toLowerCase().replace(/\s+/g, '-');
+
+        return (
+          <div>
+            <nav className="w-full py-5 text-center sticky top-0 bg-[#0f0f0f] z-10">
+              <ul className="flex justify-center gap-10 list-none m-0 p-0">
+                <li><a href="#about" className="text-white hover:text-gray-400 transition">About</a></li>
+                <li><a href="#projects" className="text-white hover:text-gray-400 transition">Projects</a></li>
+                <li><a href="#contact" className="text-white hover:text-gray-400 transition">Contact</a></li>
+              </ul>
+            </nav>
+
+            <div className="flex flex-col items-center mt-16">
+              <h1 className="text-6xl tracking-wider mb-10">PORTFOLIO</h1>
+              <div className="flex flex-wrap gap-10 justify-center">
+                {images.map((img, idx) => (
+                  <div key={idx} className="relative flex flex-col items-center">
+                    <div className="w-40 h-52 border-8 border-[#333] shadow-lg animate-[swing_3s_ease-in-out_infinite] bg-white relative transition-transform duration-300 hover:scale-105 hover:shadow-[0_8px_16px_rgba(255,204,112,0.3)]">
+                      <a href={`#${getIdFromName(img.name)}`} className="w-full h-full">
+                        <img src={img.src} alt={img.name} className="w-full h-full object-cover" />
+                      </a>
+                    </div>
+                    <a href={`#${getIdFromName(img.name)}`} className="mt-3 text-[#ffcc70] font-bold">{img.name}</a>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <section id="about" className="py-20 px-[10%] text-center">
+              <h2 className="text-4xl text-[#ffcc70] mb-5">About Us</h2>
+              <p className="text-gray-300">Welcome to our portfolio!</p>
+            </section>
+
+            <section id="projects" className="py-20 px-[10%]">
+              <h2 className="text-4xl text-[#ffcc70] text-center mb-10">Projects</h2>
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+                {projects.map((proj, i) => (
+                  <div key={i} className="bg-[#1a1a1a] border border-[#333] rounded-lg overflow-hidden relative transition-transform duration-300 hover:scale-105 hover:shadow-[0_8px_16px_rgba(255,204,112,0.3)]">
+                    <a href={proj.link} target="_blank" rel="noopener noreferrer" className="absolute inset-0 z-10 opacity-0"></a>
+                    <img src={proj.img} alt={proj.title} className="w-full h-44 object-cover" />
+                    <div className="p-5">
+                      <h3 className="text-[#ffcc70] mb-2">{proj.title}</h3>
+                      <p className="text-sm text-gray-300">{proj.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </section>
+
+            {Object.keys(profiles).map((name, i) => (
+  <section key={i} id={getIdFromName(name)} className={`py-24 px-5 min-h-screen text-center ${i % 2 === 0 ? 'bg-[#1a1a1a]' : 'bg-[#111]'}`}>
+    <h2 className="text-3xl text-[#ffcc70] mb-5">{name}</h2>
+    <div className="relative inline-block">
+      <div className="w-36 h-36 rounded-lg shadow-lg bg-white relative">
+        <img src={profiles[name].image} alt={name} className="w-full h-full object-cover rounded-lg" />
+      </div>
+    </div>
+    <div className="mt-10">
+      <h2 className="text-2xl text-[#ffcc70] mb-3">Role</h2>
+      <ul className="text-white list-disc list-inside">
+        {profiles[name].role.map((role, r) => <li key={r}>{role}</li>)}
+      </ul>
+      <h2 className="text-2xl text-[#ffcc70] mt-10 mb-3">Education</h2>
+      <ul className="text-white list-disc list-inside">
+        {profiles[name].education.map((edu, j) => <li key={j}>{edu}</li>)}
+      </ul>
+      <h2 className="text-2xl text-[#ffcc70] mt-10 mb-3">Technical Skills</h2>
+      <ul className="text-white list-disc list-inside">
+        {profiles[name].skills.map((skill, k) => <li key={k}>{skill}</li>)}
+      </ul>
+      {profiles[name].resume && (
+        <div className="mt-5">
+          <a href={profiles[name].resume} target="_blank" rel="noopener noreferrer" className="text-[#ffcc70] font-bold hover:underline">
+            📄 View Resume
+          </a>
+        </div>
+      )}
+    </div>
+  </section>
+))}
+            <section id="contact" className="bg-[#111] text-center py-20 px-[10%]">
+              <h2 className="text-4xl text-[#ffcc70] mb-10">Contact</h2>
+              <p className="text-gray-300 mb-2">Email: <a href="mailto:ic.admin@cvsu.edu.ph" className="text-[#ffcc70] hover:underline">ic.admin@cvsu.edu.ph</a></p>
+              <p className="text-gray-300 mb-2">Phone: <a href="tel:+12364370" className="text-[#ffcc70] hover:underline">0912345678</a></p>
+              <p className="text-gray-300">Follow us on <a href="#" className="text-[#ffcc70] hover:underline">LinkedIn</a> | <a href="#" className="text-[#ffcc70] hover:underline">GitHub</a></p>
+            </section>
+          </div>
+        );
+      }
+
+      ReactDOM.render(<App />, document.getElementById("root"));
+    </script>
   </body>
 </html>
