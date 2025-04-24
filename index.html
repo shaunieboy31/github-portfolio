@@ -108,7 +108,11 @@
       </div>
     </div>
     <div className="mt-10">
-      <h2 className="text-2xl text-[#ffcc70] mb-3">Education</h2>
+      <h2 className="text-2xl text-[#ffcc70] mb-3">Role</h2>
+      <ul className="text-white list-disc list-inside">
+        {profiles[name].Role.map((role, r) => <li key={r}>{role}</li>)}
+      </ul>
+      <h2 className="text-2xl text-[#ffcc70] mt-10 mb-3">Education</h2>
       <ul className="text-white list-disc list-inside">
         {profiles[name].education.map((edu, j) => <li key={j}>{edu}</li>)}
       </ul>
