@@ -2,15 +2,15 @@ import React from 'react';
 
 function App() {
   const images = [
-    { src: 'img/shaun.jpg', name: 'Shaun Russelle Obsenares' },
-    { src: 'img/kate.jpg', name: 'Kate Justine Pades' },
-    { src: 'img/cristel.jpg', name: 'Cristel Nicole Vergara' },
+    { src: 'img/shaun russelle obsenares.jpg', name: 'Shaun Russelle Obsenares' },
+    { src: 'img/kate justine pades.jpg', name: 'Kate Justine Pades' },
+    { src: 'img/cristel nicole vergara.jpg', name: 'Cristel Nicole Vergara' },
   ];
 
   const projects = [
-    { title: 'Project 1', desc: 'Description of Project 1', img: 'img/project1.jpg', link: '#' },
-    { title: 'Project 2', desc: 'Description of Project 2', img: 'img/project2.jpg', link: '#' },
-    { title: 'Project 3', desc: 'Description of Project 3', img: 'img/project3.jpg', link: '#' },
+    { title: 'Binalot POS System', desc: 'A POS system for restaurants.', img: 'img/binalot.png', link: '#' },
+    { title: 'KJE Printing', desc: 'A web app for home-based printing services.', img: 'img/kje.jpg', link: '#' },
+    { title: 'Project 3', desc: 'A mobile app using React Native.', img: 'img/project3.jpg', link: '#' },
   ];
 
   const profiles = {
@@ -19,14 +19,35 @@ function App() {
       education: ['BS in Information Technology - Cavite State University'],
       skills: ['React', 'JavaScript', 'CSS'],
       resume: 'resume/shaun.pdf',
-      image: 'img/shaun.jpg',
+      image: 'img/shaun russelle obsenares.jpg',
     },
     'Kate Justine Pades': {
       role: ['Frontend Developer'],
       education: ['BS in Information Technology - Cavite State University'],
       skills: ['HTML', 'CSS', 'JavaScript'],
-      resume: 'resume/kate.pdf',
-      image: 'img/kate.jpg',
+      resume: 'resume/pades.pdf',
+      image: 'img/kate justine pades.jpg',
+    },
+    'Cristel Nicole Vergara': {
+      role: ['Backend Developer'],
+      education: ['BS in Information Technology - Cavite State University'],
+      skills: ['Node.js', 'Express', 'MongoDB'],
+      resume: 'resume/cristel.pdf',
+      image: 'img/cristel nicole vergara.jpg',
+    },
+    'Cherly Vic Bakilid': {
+      role: ['Database Administrator'],
+      education: ['BS in Information Technology - Cavite State University'],
+      skills: ['MySQL', 'PostgreSQL', 'Database Design'],
+      resume: 'resume/che.pdf',
+      image: 'img/cherly vic bakilid.jpg',
+    },
+    'Jhon Mark Morales': {
+      role: ['Mobile Developer'],
+      education: ['BS in Information Technology - Cavite State University'],
+      skills: ['React Native', 'Flutter', 'Swift'],
+      resume: 'resume/jm.pdf',
+      image: 'img/jhon mark morales.jpg',
     },
   };
 
