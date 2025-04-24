@@ -43,7 +43,7 @@
         ];
 
         const profiles = {
-          "Shaun Russelle Obsenares": { education: ["Imus Pilot Elementary School (2010 - 2016)","Bacoor National High School (2016 - 2020)","Victorious Christian Montessori College Inc. (2020 - 2022)","BS in Information Technology - Cavite State University- Imus Campus (2022 - Present)"], skills: ["Photoshop", "Java.png", "Php.png", "Github"], resume: "resume/shaun.pdf", image: "img/shaun russelle obsenares.jpg" },
+          "Shaun Russelle Obsenares": {  Role: ["Full Stack Developer"] , education: ["Imus Pilot Elementary School (2010 - 2016)","Bacoor National High School (2016 - 2020)","Victorious Christian Montessori College Inc. (2020 - 2022)","BS in Information Technology - Cavite State University- Imus Campus (2022 - Present)"], skills: ["Photoshop", "Java.png", "Php.png", "Github"], resume: "resume/shaun.pdf", image: "img/shaun russelle obsenares.jpg" },
           "Kate Justine Pades": { education: ["BS in Information Technology - Cavite State University- Imus Campus", "2022 - Present"], skills: ["illustrator.png", "blender.png"], resume: "resume/kate.pdf", image: "img/kate justine pades.jpg" },
           "Cristel Nicole Vergara": { education: ["BS in Information Technology - Cavite State University- Imus Campus", "2022 - Present"], skills: ["typescript.png", "nextjs.png"], resume: "resume/cristel.pdf", image: "img/cristel nicole vergara.jpg" },
           "Cherly Vic Bakilid": { education: ["BS in Information Technology - Cavite State University- Imus Campus", "2022 - Present"], skills: ["laravel.png", "mysql.png"], resume: "resume/che.pdf", image: "img/cherly vic bakilid.jpg" },
@@ -100,33 +100,32 @@
             </section>
 
             {Object.keys(profiles).map((name, i) => (
-              <section key={i} id={getIdFromName(name)} className={`py-24 px-5 min-h-screen text-center ${i % 2 === 0 ? 'bg-[#1a1a1a]' : 'bg-[#111]'}`}>
-                <h2 className="text-3xl text-[#ffcc70] mb-5">{name}</h2>
-                <div className="relative inline-block">
-                  <div className="w-36 h-36 rounded-lg shadow-lg bg-white relative">
-                    <img src={profiles[name].image} alt={name} className="w-full h-full object-cover rounded-lg" />
-                  </div>
-                </div>
-                <div className="mt-10">
-                  <h2 className="text-2xl text-[#ffcc70] mb-3">Education</h2>
-                  <ul className="text-white list-disc list-inside">
-                    {profiles[name].education.map((edu, j) => <li key={j}>{edu}</li>)}
-                  </ul>
-                  <h2 className="text-2xl text-[#ffcc70] mt-10 mb-3">Technical Skills</h2>
-                  <div className="flex flex-wrap justify-center gap-5 mt-4">
-                    {profiles[name].skills.map((sk, k) => <img key={k} src={sk} alt={sk} className="w-10 h-10 filter brightness-0 invert hover:scale-125 transition-transform duration-300" />)}
-                  </div>
-                  {profiles[name].resume && (
-                    <div className="mt-5">
-                      <a href={profiles[name].resume} target="_blank" rel="noopener noreferrer" className="text-[#ffcc70] font-bold hover:underline">
-                        📄 View Resume
-                      </a>
-                    </div>
-                  )}
-                </div>
-              </section>
-            ))}
-
+  <section key={i} id={getIdFromName(name)} className={`py-24 px-5 min-h-screen text-center ${i % 2 === 0 ? 'bg-[#1a1a1a]' : 'bg-[#111]'}`}>
+    <h2 className="text-3xl text-[#ffcc70] mb-5">{name}</h2>
+    <div className="relative inline-block">
+      <div className="w-36 h-36 rounded-lg shadow-lg bg-white relative">
+        <img src={profiles[name].image} alt={name} className="w-full h-full object-cover rounded-lg" />
+      </div>
+    </div>
+    <div className="mt-10">
+      <h2 className="text-2xl text-[#ffcc70] mb-3">Education</h2>
+      <ul className="text-white list-disc list-inside">
+        {profiles[name].education.map((edu, j) => <li key={j}>{edu}</li>)}
+      </ul>
+      <h2 className="text-2xl text-[#ffcc70] mt-10 mb-3">Technical Skills</h2>
+      <ul className="text-white list-disc list-inside">
+        {profiles[name].skills.map((skill, k) => <li key={k}>{skill}</li>)}
+      </ul>
+      {profiles[name].resume && (
+        <div className="mt-5">
+          <a href={profiles[name].resume} target="_blank" rel="noopener noreferrer" className="text-[#ffcc70] font-bold hover:underline">
+            📄 View Resume
+          </a>
+        </div>
+      )}
+    </div>
+  </section>
+))}
             <section id="contact" className="bg-[#111] text-center py-20 px-[10%]">
               <h2 className="text-4xl text-[#ffcc70] mb-10">Contact</h2>
               <p className="text-gray-300 mb-2">Email: <a href="mailto:ic.admin@cvsu.edu.ph" className="text-[#ffcc70] hover:underline">ic.admin@cvsu.edu.ph</a></p>
