@@ -1,7 +1,5 @@
-<script type="text/babel">
-  import React from 'react';
-  import ReactDOM from 'react-dom';
-  import App from './app'; // Ensure the path is correct
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './app'; // Corrected the path to match the file structure
 
-  ReactDOM.render(<App />, document.getElementById('root'));
-</script>
+ReactDOM.render(<App />, document.getElementById('root'));
